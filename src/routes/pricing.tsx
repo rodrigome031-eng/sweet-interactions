@@ -1,0 +1,7 @@
+import { createFileRoute, Link } from "@tanstack/react-router";
+import { Check, X } from "lucide-react";
+import { PageShell, SectionHeading } from "../components/aries";
+export const Route = createFileRoute("/pricing")({ component: Pricing });
+const plans=[["Basic","$1,995/m"],["Pro","$3,995/m"],["Premium","$5,995/m"]];
+const features=[["Enjoy limitless design requests.",true,true,true],["One request at a time",true,true,true],["Average 48 hours delivery",false,true,true],["Unlimited brands",false,true,true],["Easy credit-card payments",false,false,true],["Pause or cancel anytime",false,false,true]];
+function Pricing(){return <PageShell><section className="page-hero"><SectionHeading label="Pricing" title="Simple plans for ambitious teams" description="Choose a level of creative support that fits your current stage. The layout mirrors the reference while remaining a frontend-only demo."/></section><section className="section pricing-grid pricing-page">{plans.map(([name,price],i)=><article className={`price-card ${i===1?"popular":""}`} key={name}>{i===1&&<span className="popular-badge">Most Popular</span>}<b>{name}</b><h3>{price}</h3><p>Pause or cancel anytime.</p><Link to="/waitlist" className="ghost-button full">Get Started</Link><a href="#included">Book a Call ↗</a><h4>What’s included:</h4>{features.map(([text,a,b,c])=>{const ok=[a,b,c][i] as boolean;return <span className={`check-item ${ok?"":"disabled"}`} key={String(text)}>{ok?<Check size={15}/>:<X size={15}/>} {String(text)}</span>})}</article>)}</section></PageShell>}

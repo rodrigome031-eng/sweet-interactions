@@ -1,0 +1,6 @@
+import { createFileRoute } from "@tanstack/react-router";
+import { ArrowUpRight, Box, Code2, Palette, Sparkles, Zap } from "lucide-react";
+import { PageShell, SectionHeading } from "../components/aries";
+export const Route = createFileRoute("/tools")({ component: Tools });
+const tools=[["Figurative","Collaborative design and prototyping tool online.",Palette],["FrameX","Interactive prototypes for advanced animations.",Sparkles],["Shopty","E-commerce platform for online shopping websites.",Box],["Idease","Rapid ideation and visual planning.",Zap],["Webflew","Flexible no-code workflows for modern sites.",Code2],["Payflow","Payment-ready product experiences.",ArrowUpRight]];
+function Tools(){return <PageShell><section className="page-hero"><SectionHeading label="Tools" title="Tools We Utilize for Excellence" description="A focused stack of tools and technologies helps us design, prototype and ship with confidence."/></section><section className="section tool-grid page-tools">{tools.map(([name,desc,Icon])=><article className="tool-card large" key={String(name)}><div className="tool-icon"><Icon size={21}/></div><b>{String(name)}</b><ArrowUpRight size={16}/><p>{String(desc)}</p></article>)}</section></PageShell>}

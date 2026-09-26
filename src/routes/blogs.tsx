@@ -1,0 +1,6 @@
+import { createFileRoute } from "@tanstack/react-router";
+import { ArrowRight } from "lucide-react";
+import { PageShell, SectionHeading } from "../components/aries";
+export const Route = createFileRoute("/blogs")({ component: Blogs });
+const posts=[["Design systems","How a strong visual system makes a brand feel instantly recognizable."],["Conversion design","The small interaction details that help visitors keep moving."],["Performance","Why fast, focused interfaces create better digital experiences."],["Brand strategy","Turning positioning into a web experience people remember."],["Responsive craft","Designing every section to feel intentional on every screen."],["Launch notes","What we check before a website is ready to go live."]];
+function Blogs(){return <PageShell><section className="page-hero"><SectionHeading label="Insights" title="Ideas for Better Digital Experiences" description="Notes on design, development, strategy and the details behind high-performing websites."/></section><section className="section article-grid">{posts.map(([tag,title],i)=><article className="article-card" key={title}><div className={`article-art art-${i%3}`}><span>{String(i+1).padStart(2,"0")}</span></div><small>{tag}</small><h3>{title}</h3><a href="#read">Read article <ArrowRight size={15}/></a></article>)}</section></PageShell>}
